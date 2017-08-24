@@ -1,0 +1,38 @@
+.mainBox{
+	width: 100%;height: 118px;
+	background: #ECF7FD;
+	.navbox{
+	    width: 100%;height: 100%;
+	    margin-left: 44px;
+	    float: left;
+	    .navitembox{
+	      float: left;margin-top: 15px;margin-left: 170px;
+	      width: 65px;height: 90px;
+	      cursor: pointer;
+	      // line-height: 80px;
+	      text-align: center;
+	      font-size: 14px;
+	      color: #4FB4E2;
+	      .imgbox{
+	      	width: 62px;height: 62px;
+	      	border-radius: 50%;
+	      	box-shadow: 0px 0px 4px 1px #A7C1CE;
+	      	background: url(../../../img/icon/navnomal.png) no-repeat;
+	      	img{
+		      	display: inline-block;
+		      }
+	      }
+	      
+	      div{
+	        width: 100%;margin-top: 5px;
+	      }
+	    }
+	    .active{
+	    	.imgbox{
+	    		background: url(../../../img/icon/navactive.png) no-repeat;
+	    	}
+	    	color: #F5A623
+	    }
+	    // .active{background: url(../../../img/icon/navactive.png) no-repeat;}
+	 }
+}

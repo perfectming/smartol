@@ -1,0 +1,84 @@
+
+// .mainBox{
+// 	width: 100%;height: 990px;
+//   	background: #fff;
+// 	position: relative;
+
+	.mainbox{
+
+	  width: 900px;height: 500px;
+	  background: #fff;
+	  font-size: 26px;
+	  border: 1px solid #06AAD4;
+	  box-shadow: 0px 0px 6px 1px #A7C1CE;
+
+	  .movebox{
+	  	font-size: 30px;
+	  	width: 100%;height: 50px;
+	  	background: #06AAD4;cursor:move;
+		position: relative;
+		.closebox{
+			width: 30px;height: 30px;
+			position: absolute;right: 20px; top: 10px;text-align: center;line-height: 30px;font-size: 16px;cursor: pointer;
+			// background: url(../../img/icon/tool.png) 10px 5px no-repeat;
+		}
+	  }
+	  .head{
+	  	width: 100%;height: 30px;
+	  	margin: 0 auto;line-height: 30px;
+	  	text-align: center;
+	  	padding-top: 10px;
+
+	  }
+	  .infosbox{
+	  	width: 100%;
+	  	height: 400px;
+	  	padding-top: 10px;
+	  	overflow-y:auto;
+	  	overflow-x:hidden;
+	  	.nonebox{
+	  		display: none
+	  	}
+	  	.onebox{
+	  		width: 100%;
+	  		.blockbox{
+	  			display: inline-block;
+	  		}
+	  		.hiddenbox{
+	  			display: none;
+	  		}
+	  		.onetitbox{
+	  			padding-left:20px; font-size: 22px;
+	  		}
+	  		.towtitbox{
+	  			padding-left: 35px;font-size: 20px;
+	  		}
+	  		.thrtitbox{
+	  			padding-left: 55px;font-size: 18px;
+
+	  		}
+	  		// .fourtitbox{
+	  		// 	padding-left: 200px;font-size: 32px;
+	  		// }
+	  		.libox{
+				margin-left:70px; 
+				width: 100%;height: 25px;
+				font-size: 16px;line-height: 25px;
+				span:nth-child(1){
+					width: 320px;
+				}
+				span:nth-child(2){
+					margin-left: 50px;
+					width: 380px;
+					color: #BB1A21;
+				}
+				span{display: inline-table;}
+			}
+			.libox:hover{background:#83D3ED }
+			.none{display: none}
+	  	} 
+	  }
+	}
+// }
+
+

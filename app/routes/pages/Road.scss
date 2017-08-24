@@ -1,0 +1,144 @@
+.mainBox{
+	width: 100%;
+	height: 100%;
+
+	.headbox{
+		width: 100%;
+		height: 88px;
+		line-height: 88px;
+		border-bottom: 1px solid #B2ADAD;
+		font-size: 24px;
+		font-weight: 700;
+		padding-left: 100px;
+		span{
+			min-width: 25px;
+			padding: 0 5px;
+			display: inline-table;
+		}
+		span:nth-child(1){color:#38A6CA}
+		span:nth-child(2){color:#AB010B}
+	}
+	.infobox{
+		width: 100%;
+		height: 760px;
+		overflow-y:auto;
+		overflow-x:hidden;
+		.firstbox{
+			width: 100%;
+			.numbox{
+				min-width: 25px;
+				padding: 0 5px;
+				color:#AB010B
+			}
+			.hiddenbox{
+				display: none;
+			}
+			.iconbox{
+				float: left;
+				width: 24px;height: 24px;
+				margin:26px 16px 0 40px ;
+			}
+			.nomal{
+				background: url(../../img/icon/nice.png) no-repeat;
+			}
+			.wrong{
+				background: url(../../img/icon/error.png) no-repeat;
+			}
+			.fsttitle{
+				float: left;
+				font-size: 22px;
+				line-height: 74px;
+				font-weight: 700;
+			}
+			.line{
+				clear: both;
+				width: 100%;height: 1px;margin-left: 40px;
+				border-bottom: 1px solid #B9B9B9;
+
+			}
+			.secbox{
+				width: 100%;
+				.sceitem{
+					width: 100%;
+					padding-left: 95px;
+					line-height: 60px;
+					font-size: 18px;
+					position: relative;
+					font-weight: 700;
+					.numbox2{
+						min-width: 25px;
+						padding: 0 5px;
+						color:#AB010B
+					}
+					.pullicon{
+						position: absolute;right: 0;top: 0;
+						width: 100%;height: 60px; 
+						background: url(../../img/icon/pull.png) 1600px 24px no-repeat;
+					}
+					.line2{
+						width: 100%;height: 1px;
+						border-bottom: 1px solid #C6C4C4;
+
+					}
+				}
+				
+				.sceitem:hover{
+					background: #D9EDF8;
+				}
+				.thirdbox{
+					width: 100%;
+					display: none;
+					margin-left: 120px;
+					overflow: hidden;
+					.thirdinfobox{
+						float: left;
+						width: 840px;
+						height: 220px;
+						margin-top: 15px;
+						.textinfobox{
+							width: 100%;height: 180px;
+							border: 1px solid #E0DBDB;
+							border-top: none;
+							overflow-y:auto;
+							overflow-x:hidden;
+							padding: 10px 0 0 15px;
+							// display: inline-table;
+
+							.libox{
+								width: 100%;
+								font-size: 16px;
+								display: inline-block;
+								cursor: pointer;
+								// $height: 100%;
+								div:nth-child(2){
+									width: 400px;
+									color: #BB1A21;
+									word-wrap:break-word;
+									height: 24px;
+									line-height: 24px;
+								}
+								div:nth-child(1){
+									width: 380px;
+									height: 100%;
+									line-height: 24px;
+								}
+								div{float: left;display: inline-table;}
+							}
+							.libox:hover{background: #89D6ED}
+							.none{display: none}
+							.show{display:inline-table;}
+						}
+					}
+					.thirdinfobox:nth-child(2n){
+						margin-left: 25px;
+
+					}
+				}
+				
+			}
+		}
+	}
+}
+.waitbox{
+  width: 100%;height: 990px;background:#fff;
+}
