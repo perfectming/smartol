@@ -12,7 +12,7 @@ let Body = React.createClass({
     this.props.init();
   },
   render () {
-    let {roadData,pullDown2,roadboo,sum,tomap} = this.props;
+    let {roadData,pullDown2,roadboo,sum,tomap,openbtn} = this.props;
       
     if(roadboo){
       return (
@@ -51,9 +51,12 @@ let Body = React.createClass({
                                               {
                                                 value.content != undefined && value.content.map((value, key4)=>{
                                                   return(
-                                                      <div className={`${value.content != undefined ? styles.show : styles.none} ${styles.libox}`} key={key4} onClick={()=>tomap()}>
-                                                        {value.content != undefined && <div>{value.name}</div>}
-                                                        {value.content != undefined && <div>{value.content}</div>}
+                                                      <div className={`${value.content != undefined ? styles.show : styles.none} ${styles.libox}`} key={key4}>
+                                                        {value.content != undefined && <div className={styles.textbox}>{value.name}</div>}
+                                                        {value.content != undefined && <div onClick={()=>tomap()}>{value.content}</div>}
+                                                        <div className={styles.openbtn} onClick={(e)=>openbtn(e.target)}>
+                                                          
+                                                        </div>
                                                       </div>
                                                   )
                                                 })
@@ -133,6 +136,31 @@ const mapDispatchToProps = (dispatch) => {
       window.open("wmap", "_blank");
       // window.open ("framepage", "qweqeqewqe", 'height=400, width=710, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, left=400, top=400')
       // : message.error('暂无该项评估报告',5);
+    },
+    openbtn: (key)=> {
+      // window.open("wmap", "_blank");
+      window.open ("framepage3", "qweqeqewqe", 'height=400, width=710, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, left=400, top=400')
+      // : message.error('暂无该项评估报告',5);
+      let data = $(key).prev().prev().text();
+      console.log(data)
+      $.ajax({
+        async: true,
+        type : "POST",
+        url : 'http://172.16.1.2:8080/database/correctnesserror',
+        // url : url,
+        data:data,
+        dataType: 'json',
+        contentType:'application/json',
+        complete: function(msg){
+            // console.log(msg.responseText);
+            
+        },
+        success : function(data) {
+            
+
+        }
+        
+      })
     }
   }
 }

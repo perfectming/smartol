@@ -28,7 +28,7 @@ let Body = React.createClass({
     $.ajax({
         async: true,
         type : "POST",
-        url: 'http://172.16.1.47:8080/database/aa',
+        url: 'http://172.16.1.2:8080/database/aa',
         data: '',
         dataType: 'json',
         contentType:'application/json',
@@ -39,6 +39,9 @@ let Body = React.createClass({
             data.features[0].geometry.coordinates.map((value, key)=> {
               key == 0 && value.map((value, key)=> {
                 if(key==0){
+                  let layer = new ol.layer.Vector({
+                      source: new ol.source.Vector()
+                    })
                   let map = new ol.Map({
                     layers: [
                       new ol.layer.Tile({
@@ -49,11 +52,11 @@ let Body = React.createClass({
                       }),
                       // new ol.layer.Tile({
                       //       source: new ol.source.OSM()
-                      //     }), 
-
+                      //       }), 
+                      layer
                     ],
                     view: new ol.View({ 
-                      projection: 'EPSG:3857',
+                      projection: 'EPSG:4326',
                         center: value,
                       zoom: 10
                     }),
@@ -85,7 +88,7 @@ let Body = React.createClass({
                     }),
                     'MultiLineString': new ol.style.Style({
                       stroke: new ol.style.Stroke({
-                        color: 'green',
+                        color: 'rgba(247,4,3, 1)',
                         width: 4
                       })
                     }),
@@ -145,20 +148,37 @@ let Body = React.createClass({
                     
                   // 加载矢量地图
                   function addGeoJSON(data) {
-                      let layer = new ol.layer.Vector({
+                      let layer2 = new ol.layer.Vector({
                           source: new ol.source.Vector({
                               features: (new ol.format.GeoJSON()).readFeatures(data, {     // 用readFeatures方法可以自定义坐标系
-                                  dataProjection: 'EPSG:3857',    // 设定JSON数据使用的坐标系
-                                  featureProjection: 'EPSG:3857' // 设定当前地图使用的feature的坐标系
+                                  dataProjection: 'EPSG:4326',    // 设定JSON数据使用的坐标系
+                                  featureProjection: 'EPSG:4326' // 设定当前地图使用的feature的坐标系
                               })
                           }),
                           style: styleFunction
                       });
 
-                      map.addLayer(layer);
+                      map.addLayer(layer2);
                   }
                   
                   addGeoJSON(data);
+                  var anchor = new ol.Feature({
+                        geometry: new ol.geom.Point(value)
+                      });
+                      anchor.setStyle(new ol.style.Style({
+                        image: new ol.style.Icon({
+                          src: 'http://172.16.1.2:9090/public/posicon.png'
+                        })
+                      }));
+                      layer.getSource().addFeature(anchor);
+
+                      // 监听地图层级变化
+                      map.getView().on('change:resolution', function(){
+                          var style = anchor.getStyle();
+                          // 重新设置图标的缩放率，基于层级10来做缩放
+                          style.getImage().setScale(this.getZoom() / 10);
+                          anchor.setStyle(style);
+                      })
                   // function addGeoJSON2(data) {
                   //     let layer2 = new ol.layer.Vector({
                   //         source: new ol.source.Vector({

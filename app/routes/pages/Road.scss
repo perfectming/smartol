@@ -106,25 +106,43 @@
 
 							.libox{
 								width: 100%;
-								font-size: 16px;
+								font-size: 18px;
 								display: inline-block;
 								cursor: pointer;
 								// $height: 100%;
-								div:nth-child(2){
-									width: 400px;
-									color: #BB1A21;
-									word-wrap:break-word;
-									height: 24px;
-									line-height: 24px;
-								}
 								div:nth-child(1){
+									float: left;
 									width: 380px;
 									height: 100%;
 									line-height: 24px;
 								}
+								div:nth-child(2){
+									float: left;
+									width: 360px;
+									color: #BB1A21;
+									word-wrap:break-word;
+									// height: 24px;
+									line-height: 24px;
+								}
+								div:nth-child(3){
+									float: left;
+									width: 60px;
+									// color: #BB1A21;
+									// word-wrap:break-word;
+									// height: 24px;
+									line-height: 24px;
+									// background: blue;
+									text-align: center;
+									// div{
+									// 	margin: 2px auto;
+									// 	background: #333;
+									// 	width: 4px;height: 4px;
+									// }
+								}
 								div{float: left;display: inline-table;}
+
 							}
-							.libox:hover{background: #89D6ED}
+							.libox:hover{background: #D9EDF8}
 							.none{display: none}
 							.show{display:inline-table;}
 						}
