@@ -5,6 +5,8 @@ import data from '../../../config/modata.js'
 import actions from 'fengui/redux/actions'
 import Title from '../../comps/Title.jsx'
 import Loading from 'fengui/component/page/Loading'
+import { Alert, message } from 'antd' 
+import Framepage4 from './Framepage4.jsx'        
 
 let Body = React.createClass({
   componentWillMount () {
@@ -12,7 +14,7 @@ let Body = React.createClass({
     this.props.init();
   },
   render () {
-    let {roadData,pullDown2,roadboo,sum,tomap,openbtn} = this.props;
+    let {roadData,pullDown2,roadboo,sum,tomap,openbtn,frameboo4} = this.props;
       
     if(roadboo){
       return (
@@ -55,7 +57,9 @@ let Body = React.createClass({
                                                         {value.content != undefined && <div className={styles.textbox}>{value.name}</div>}
                                                         {value.content != undefined && <div onClick={()=>tomap()}>{value.content}</div>}
                                                         <div className={styles.openbtn} onClick={(e)=>openbtn(e.target)}>
-                                                          
+                                                          <p></p>
+                                                          <p></p>
+                                                          <p></p>
                                                         </div>
                                                       </div>
                                                   )
@@ -80,6 +84,7 @@ let Body = React.createClass({
               })
             }
           </div>
+          {frameboo4 && <Framepage4 frameboo4={frameboo4}/>}
         </div>
       )
     }else{
@@ -95,6 +100,7 @@ const mapStateToProps = (state) => {
     roadData: state.vars.resualt,
     roadboo:state.vars.roadboo,
     sum:state.vars.sum,
+    frameboo4:state.vars.frameboo4,
   }
 }
 
@@ -139,28 +145,34 @@ const mapDispatchToProps = (dispatch) => {
     },
     openbtn: (key)=> {
       // window.open("wmap", "_blank");
-      window.open ("framepage3", "qweqeqewqe", 'height=400, width=710, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, left=400, top=400')
+      // window.open ("framepage3", "qweqeqewqe", 'height=400, width=710, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, left=400, top=400')
       // : message.error('暂无该项评估报告',5);
-      let data = $(key).prev().prev().text();
-      console.log(data)
-      $.ajax({
-        async: true,
-        type : "POST",
-        url : 'http://172.16.1.2:8080/database/correctnesserror',
-        // url : url,
-        data:data,
-        dataType: 'json',
-        contentType:'application/json',
-        complete: function(msg){
-            // console.log(msg.responseText);
+      let datas = $(key).prev().prev().text();
+      console.log(datas)
+      // $.ajax({
+      //   async: true,
+      //   type : "POST",
+      //   url : 'http://172.16.1.47:8080/database/correctnesserror',
+      //   // url : url,
+      //   data:datas,
+      //   dataType: 'json',
+      //   contentType:'application/json',
+      //   complete: function(msg){
+      //       // console.log(msg.responseText);
             
-        },
-        success : function(data) {
-            
+      //   },
+      //   success : function(data) {
+          // dispatch(actions.setVars('wrongdata2',datas)) 
+          dispatch(actions.setVars('frameboo4',datas))
+          // window.open ("framepage3?id="+datas, "qweqeqewqe", 'height=600, width=980, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, left=200, top=400')    
 
-        }
-        
-      })
+        // },
+        // error: function(XMLHttpRequest, textStatus, errorThrown) {
+        //   // if(textStatus=='timeout'){
+        //     message.error('错误信息数据请求失败',3);
+        //   // }
+        // },
+      // })
     }
   }
 }
