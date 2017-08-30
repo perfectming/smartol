@@ -14,12 +14,13 @@ let Body = React.createClass({
     this.props.init(frameboo4);
   },
   getInitialState:function(){
-       return{
-          x:700,
-          y:300,
-          boo:false,
-          m:0,
-          n:0
+      return{
+        x:500,
+        y:100,
+        boo:false,
+        m:0,
+        n:0,
+        z:1
       }
   },
   MouseMove(boo,e,m,n){
@@ -72,128 +73,59 @@ let Body = React.createClass({
   render () {
     let {closebtn,wrongdata,wrongbool,frameboo4} = this.props;
     let {boo,m,n} = this.state;
+    let newarr = [];
     if(wrongbool){
-
-      if(screen.width==1366){
+     console.log(wrongdata.drop[0].length)
+     let len = wrongdata.drop[0].length;
+      
         return (
           <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
             <div className={styles.movebox} id="div" onMouseDown={(e)=>this.MouseDown(boo,e,m,n)} onMouseMove={(e)=>this.MouseMove(boo,e,m,n)} onMouseUp={()=>this.MouseUp(boo)} onMouseOut={(e)=>this.MouseOut(boo,e)}>
-            <div className={styles.closebox} onClick={()=>closebtn()}><Icon type="close-square-o" style={{ fontSize: 26, color: '#fff',width:30,height:30 }} /></div>
+            <div className={styles.closebox} onClick={()=>closebtn()}></div>
+            <p>错误数据统计</p>
             </div>
-            <div className={styles.head}>错误数据统计</div>
-            <div className={styles.infobox}>
-            <div className={styles.leftbox}>
-              <ul>
-                <li>可研报告</li>
-                {
-                  wrongdata.drop.map((value, key)=>{
-                    return(
-                        <li className={styles.rowbox} key={key}>
+            <div className={styles.tablebox}>
+              <table style={{ borderWidth: 1,width:len*2*140 }} cellSpacing="0">
+              <thead>
+                <tr>
+                    <th colSpan={len}>可研报告数据
+
+                    </th>
+                    <th colSpan="4">迭加分析数据</th>
+                  </tr>
+              </thead>
+                <tbody>
+                  {
+                    wrongdata.drop.map((value, key)=>{
+                      return (
+                        <tr key={key}>
                           {
-                            value.map((value, key)=>{
-                              return (
-                                <span key={key}>{value}</span>
+                            value.map((value,key)=>{
+                              return(
+                                <td key={key} style={{width:140,fontSize:14}}>{value}</td>
                               )
                             })
-
                           }
-                        </li>
-
-                      
-                    )
-                  })
-
-                }
-              </ul>
-            </div>
-            <div className={styles.rightbox}>
-              <ul>
-                  <li>迭加分析</li>
-                  {
-                    wrongdata.feasibility.map((value, key)=>{
-                      return(
-                          <li className={styles.rowbox} key={key}>
-                            {
-                              value.map((value, key)=>{
-                                return (
-                                  <span key={key}>{value}</span>
-                                )
-                              })
-
-                            }
-                          </li>
-
-                        
-                      )
-                    })
-
-                  }
-                </ul>
-            </div>
-          </div>
-         </div>
-        )
-      }else{
-        return (
-
-          <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
-            <div className={styles.movebox} id="div" onMouseDown={(e)=>this.MouseDown(boo,e,m,n)} onMouseMove={(e)=>this.MouseMove(boo,e,m,n)} onMouseUp={()=>this.MouseUp(boo)} onMouseOut={(e)=>this.MouseOut(boo,e)}>
-            <div className={styles.closebox} onClick={()=>closebtn()}><Icon type="close-square-o" style={{ fontSize: 26, color: '#fff' }} /><Icon type="close-square-o" style={{ fontSize: 26, color: '#fff',width:30,height:30 }} /></div>
-            </div>
-            <div className={styles.head}>线路工程评估报告</div>
-            <div className={styles.infobox}>
-            <div className={styles.leftbox}>
-              <ul>
-                <li>可研报告</li>
-                {
-                  wrongdata.drop.map((value, key)=>{
-                    return(
-                        <li className={styles.rowbox} key={key}>
                           {
-                            value.map((value, key)=>{
+                            wrongdata.feasibility[key].map((value,key)=>{
                               return (
-                                <span key={key}>{value}</span>
+                                <td key={key} style={{width:140,fontSize:14}}>{value}</td>
                               )
                             })
-
                           }
-                        </li>
-
-                      
-                    )
-                  })
-
-                }
-              </ul>
-            </div>
-            <div className={styles.rightbox}>
-              <ul>
-                  <li>迭加分析</li>
-                  {
-                    wrongdata.feasibility.map((value, key)=>{
-                      return(
-                          <li className={styles.rowbox} key={key}>
-                            {
-                              value.map((value, key)=>{
-                                return (
-                                  <span key={key}>{value}</span>
-                                )
-                              })
-
-                            }
-                          </li>
-
-                        
+                        </tr>
                       )
                     })
-
                   }
-                </ul>
+                  
+                  
+                  </tbody>
+              </table>
             </div>
-          </div>
+            
          </div>
         )
-      }
+      
     }else{
       return (
         <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
