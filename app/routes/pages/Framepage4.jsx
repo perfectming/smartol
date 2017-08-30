@@ -17,59 +17,10 @@ let Body = React.createClass({
       return{
         x:500,
         y:100,
-        boo:false,
-        m:0,
-        n:0,
-        z:1
+        
       }
   },
-  MouseMove(boo,e,m,n){
-    // e.preventDefault();
-    // console.log(boo)
-    let oDiv=document.getElementById('div');
-    let bianY = $(oDiv).offset().top*(1920/screen.width)+ $(oDiv).height()*(1920/screen.width);
-    if(e.clientY*(1920/screen.width)>= bianY){
-      e.clientY = bianY;
-    }
-
-
-    let pleft = e.clientX*(1920/screen.width) - $(oDiv).offset().left*(1920/screen.width);
-    let ptop = e.clientY*(1920/screen.width) - $(oDiv).offset().top*(1920/screen.width);
-    console.log($(oDiv).offset().left)
-    // console.log(ptop)
-    boo && this.setState({
-      x:e.clientX*(1920/screen.width)-m,
-      y:e.clientY*(1920/screen.width)-n  + $(window).scrollTop()
-    });
-  },
-  MouseUp(boo,e){
-    this.setState({
-        boo:false,
-        
-    });
-  },
-  MouseOut(boo,e){
-    e.preventDefault();
-    this.setState({
-        boo:false,
-        
-    });
-  },
-  MouseDown(boo,e,m,n){
-    let oDiv=document.getElementById('div');
-    // console.log("gun",);
-    // console.log(e.clientX)
-    // console.log($(oDiv).offset().top);
-    let pleft = e.clientX*(1920/screen.width) - $(oDiv).offset().left*(1920/screen.width);
-    let ptop = e.clientY*(1920/screen.width) - $(oDiv).offset().top*(1920/screen.width);
-
-
-      this.setState({
-        boo:true,
-        m:pleft,
-        n:ptop + $(window).scrollTop()+208
-      });
-  },
+  
   render () {
     let {closebtn,wrongdata,wrongbool,frameboo4} = this.props;
     let {boo,m,n} = this.state;
@@ -80,7 +31,7 @@ let Body = React.createClass({
       
         return (
           <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
-            <div className={styles.movebox} id="div" onMouseDown={(e)=>this.MouseDown(boo,e,m,n)} onMouseMove={(e)=>this.MouseMove(boo,e,m,n)} onMouseUp={()=>this.MouseUp(boo)} onMouseOut={(e)=>this.MouseOut(boo,e)}>
+            <div className={styles.movebox} id="div" >
             <div className={styles.closebox} onClick={()=>closebtn()}></div>
             <p>错误数据统计</p>
             </div>
@@ -129,7 +80,7 @@ let Body = React.createClass({
     }else{
       return (
         <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
-        <div className={styles.movebox} id="div" onMouseDown={(e)=>this.MouseDown(boo,e,m,n)} onMouseMove={(e)=>this.MouseMove(boo,e,m,n)} onMouseUp={()=>this.MouseUp(boo)} onMouseOut={(e)=>this.MouseOut(boo,e)}>
+        <div className={styles.movebox} id="div" >
           </div>
           <Loading/>
         </div>
