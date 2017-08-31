@@ -5,7 +5,7 @@ import actions from 'fengui/redux/actions'
 import data from '../../../config/modata.js'
 import Title from '../../comps/Title.jsx'
 import Loading from 'fengui/component/page/Loading'
-
+import url from '../../../config/urls.js'
 import { Alert, message, Icon} from 'antd'
 console.log(screen.width)
 let Body = React.createClass({
@@ -215,7 +215,7 @@ const mapDispatchToProps = (dispatch) => {
       $.ajax({
         async: true,
         type : "POST",
-        url : 'http://172.16.1.2:8080/database/analysisresults',
+        url : url.burl,
         // url : url,
         data: '',
         dataType: 'json',

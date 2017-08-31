@@ -2,7 +2,7 @@ body {
   margin: 0 auto;
   background-color: #efeff4;
   color: #333;
-  overflow-x:hidden;
+  overflow:hidden;
 }
 
 .noSelect{

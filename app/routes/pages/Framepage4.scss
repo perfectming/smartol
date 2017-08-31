@@ -29,9 +29,9 @@
 		}
 	  }
 	  .tablebox{
-	  	width: 100%;height: 448px;overflow-x: scroll;
-	  	table {border:1px solid #cccccc;
-	  		margin: 20px 18px;overflow-x:scroll; 
+	  	width: 100%;height: 448px;overflow-x: scroll;margin-right: 20px;
+	  	table {-border:1px solid #cccccc;
+	  		margin: 20px 18px;overflow-x:scroll; padding-right: 20px
 		  }
 		  th{border:1px solid #cccccc;height: 40px;font-size: 16px;}
 		  td{border:1px solid #cccccc;width: 138px;padding: 8px 6px;}

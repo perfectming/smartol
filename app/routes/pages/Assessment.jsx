@@ -8,7 +8,8 @@ import { browserHistory } from 'react-router'
 import Loading from 'fengui/component/page/Loading'
 import { Alert, message } from 'antd' 
 import draga from '../../../config/drag'         
-import Framepage2 from './Framepage2.jsx'        
+import Framepage2 from './Framepage2.jsx'
+import url from '../../../config/urls.js'        
   message.config({
     top: 100,
     duration: 2,
@@ -103,7 +104,7 @@ const mapDispatchToProps = (dispatch) => {
       $.ajax({
         async: true,
         type : "POST",
-        url : 'http://172.16.1.2:8080/database/find_option',
+        url : url.aurl,
         // url : url,
         data: {},
         dataType: 'json',

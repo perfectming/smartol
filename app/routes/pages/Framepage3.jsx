@@ -4,7 +4,7 @@ import actions from 'fengui/redux/actions'
 import Loading from 'fengui/component/page/Loading'
 import styles from './Framepage3.scss'
 import { Alert, message } from 'antd' 
-
+import url from '../../../config/urls.js'
 import { browserHistory } from 'react-router'
 
 let Page = React.createClass({
@@ -33,16 +33,16 @@ let Page = React.createClass({
                 {
                   wrongdata.drop.map((value, key)=>{
                     return(
-                        <li className={styles.rowbox} key={key}>
-                          {
-                            value.map((value, key)=>{
-                              return (
-                                <span key={key}>{value}</span>
-                              )
-                            })
+                      <li className={styles.rowbox} key={key}>
+                        {
+                          value.map((value, key)=>{
+                            return (
+                              <span key={key}>{value}</span>
+                            )
+                          })
 
-                          }
-                        </li>
+                        }
+                      </li>
 
                       
                     )
@@ -117,7 +117,7 @@ const mapDispatchToProps = (dispatch) => {
       $.ajax({
         async: true,
         type : "POST",
-        url : 'http://172.16.1.2:8080/database/correctnesserror',
+        url : url.durl,
         // url : url,
         data:id,
         dataType: 'json',

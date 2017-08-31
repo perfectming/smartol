@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import styles from './Road.scss'
 import data from '../../../config/modata.js'
+import url from '../../../config/urls.js'
 import actions from 'fengui/redux/actions'
 import Title from '../../comps/Title.jsx'
 import Loading from 'fengui/component/page/Loading'
@@ -55,11 +56,9 @@ let Body = React.createClass({
                                                   return(
                                                       <div className={`${value.content != undefined ? styles.show : styles.none} ${styles.libox}`} key={key4}>
                                                         {value.content != undefined && <div className={styles.textbox}>{value.name}</div>}
-                                                        {value.content != undefined && <div onClick={()=>tomap()}>{value.content}</div>}
+                                                        {value.content != undefined && <div onClick={(e)=>tomap(e.target)}>{value.content}</div>}
                                                         <div className={styles.openbtn} onClick={(e)=>openbtn(e.target)}>
-                                                          <p></p>
-                                                          <p></p>
-                                                          <p></p>
+                                                          
                                                         </div>
                                                       </div>
                                                   )
@@ -110,7 +109,7 @@ const mapDispatchToProps = (dispatch) => {
       $.ajax({
         async: true,
         type : "POST",
-        url : 'http://172.16.1.2:8080/database/analysisresults',
+        url : url.burl,
         // url : url,
         data: '',
         dataType: 'json',
@@ -138,8 +137,9 @@ const mapDispatchToProps = (dispatch) => {
     pullDown2:(key)=>{
       $(key).parent().siblings().fadeToggle();
     },
-     tomap: ()=> {
-      window.open("wmap", "_blank");
+     tomap: (key)=> {
+      let datas = $(key).prev().text();
+      window.open("wmap?id="+datas, "_blank");
       // window.open ("framepage", "qweqeqewqe", 'height=400, width=710, toolbar=no, menubar=no, scrollbars=no, resizable=no, location=no, status=no, left=400, top=400')
       // : message.error('暂无该项评估报告',5);
     },
