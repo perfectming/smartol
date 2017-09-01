@@ -249,7 +249,7 @@ let Body = React.createClass({
         error: function(XMLHttpRequest, textStatus, errorThrown) {
             console.log(errorThrown)
           // if(textStatus=='timeout'){
-            message.error('错误信息数据请求失败',3);
+            message.error('地理信息数据请求失败',3);
           // }
         },
     });

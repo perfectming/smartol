@@ -18,10 +18,8 @@ let Page = React.createClass({
     //   return <Loading/>
     // }
     return (
-      <FixedContent mode="fullWidth" width={1920}>
         <iframe frameBorder={'no'} width={'100%'} height={1080} src={'http://'+host+'/main/app/arlh.html'}></iframe>
         
-      </FixedContent>
       
     )
   }

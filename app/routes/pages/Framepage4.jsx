@@ -15,7 +15,7 @@ let Body = React.createClass({
   },
   getInitialState:function(){
       return{
-        x:500,
+        x:510,
         y:100,
         
       }
@@ -26,8 +26,8 @@ let Body = React.createClass({
     let {boo,m,n} = this.state;
     let newarr = [];
     if(wrongbool){
-     console.log(wrongdata.drop[0].length)
-     let len = wrongdata.drop[0].length;
+     console.log(wrongdata.feasibility[0].length)
+     let len = wrongdata.feasibility[0].length;
       
         return (
           <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
@@ -47,7 +47,7 @@ let Body = React.createClass({
                 </thead>
                 <tbody>
                   {
-                    wrongdata.drop.map((value, key)=>{
+                    wrongdata.feasibility.map((value, key)=>{
                       return (
                         <tr key={key}>
                           {
@@ -58,7 +58,7 @@ let Body = React.createClass({
                             })
                           }
                           {
-                            wrongdata.feasibility[key].map((value,key)=>{
+                            wrongdata.drop[key].map((value,key)=>{
                               return (
                                 <td key={key} style={{width:140,fontSize:14}}>{value}</td>
                               )
@@ -137,7 +137,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         error: function(XMLHttpRequest, textStatus, errorThrown) {
           // if(textStatus=='timeout'){
-            message.error('错误数据请求失败',3);
+            message.error('暂无该信息详细错误描述',3);
             dispatch(actions.setVars('frameboo4', false));
 
           // }

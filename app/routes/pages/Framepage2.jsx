@@ -194,6 +194,8 @@ let Body = React.createClass({
       return (
         <div className={styles.mainbox} style={{position:'absolute',left:this.state.x, top:this.state.y}}>
         <div className={styles.movebox} id="div" onMouseDown={(e)=>this.MouseDown(boo,e,m,n)} onMouseMove={(e)=>this.MouseMove(boo,e,m,n)} onMouseUp={()=>this.MouseUp(boo)} onMouseOut={(e)=>this.MouseOut(boo,e)}>
+        <div className={styles.closebox} onClick={()=>closebtn()}><Icon type="close-square-o" style={{ fontSize: 26, color: '#fff',width:30,height:30 }} /></div>
+           
           </div>
           <Loading/>
         </div>
